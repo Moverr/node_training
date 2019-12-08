@@ -21,6 +21,9 @@ http.createServer((req, res) => {
     try {
         stats = fs.lstatSync(fileName)
     } catch (e) {
-        res.writeHead(404,{'Content-type':'text/plain'})
+        res.writeHead(404,{'Content-type':'text/plain'});
+        res.write('404 not found \n');
+        res.end();
+        return;
     }
 })
