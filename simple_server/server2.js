@@ -15,4 +15,12 @@ const mimeTypes = {
 http.createServer((req, res) => {
     var uri = url.parse(req, url).pathname;
     var fileName = path.join(process.cwd(),unescape(uri))
+    console.log('Loading... '+uri);
+    var stats;
+
+    try {
+        stats = fs.lstatSync(fileName)
+    } catch (e) {
+        res.writeHead(404,{'Content-type':'text/plain'})
+    }
 })
